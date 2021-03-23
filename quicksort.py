@@ -1,9 +1,10 @@
 import random
 n = int(input())
 m = []
-for i in range(n):
+for r in range(n):
     m.append(random.randint(1, 20))
 def qsort(m):
+
     l, e, g = [], [], []
     if len(m) > 1:
         op = m[0]
@@ -17,4 +18,6 @@ def qsort(m):
         return qsort(l)+e+qsort(g)
     else:
         return m
+
+
 print(qsort(m))
