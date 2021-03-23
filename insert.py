@@ -6,7 +6,7 @@ for r in range(n):
 
 def insert(m):
 
-    for i in range(len(m)):
+    for i in range(n):
         cursor = m[i]
         pos = i
         while pos > 0 and m[pos - 1] > cursor:
