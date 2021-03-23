@@ -15,3 +15,4 @@ def insert(m):
         m[pos] = cursor
 
     return m
+print(insert(m))
