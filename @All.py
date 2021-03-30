@@ -18,45 +18,14 @@ def qsort(m):
         return qsort(l)+e+qsort(g)
     else:
         return m
+    print(m)
 
 def bubble(m):
-    for r in range(n):
-        m.append(random.randint(1, 20))
     for k in m:
         for i in range(n-1):
             if m[i] > m[i+1]:
                 m[i], m[i+1] = m[i+1], m[i]
-
-def mergeSort(m):
-    if len(m)>1:
-        mid = len(m)//2
-        lefthalf = m[:mid]
-        righthalf = m[mid:]
-
-        mergeSort(lefthalf)
-        mergeSort(righthalf)
-
-        i=0
-        j=0
-        k=0
-        while i<len(lefthalf) and j<len(righthalf):
-            if lefthalf[i]<righthalf[j]:
-                m[k]=lefthalf[i]
-                i=i+1
-            else:
-                m[k]=righthalf[j]
-                j=j+1
-            k=k+1
-
-        while i<len(lefthalf):
-            m[k]=lefthalf[i]
-            i=i+1
-            k=k+1
-
-        while j<len(righthalf):
-            m[k]=righthalf[j]
-            j=j+1
-            k=k+1
+    print(m)
 
 def insert(m):
 
@@ -69,34 +38,58 @@ def insert(m):
         m[pos] = cursor
 
     return m
+    print(m)
 
-def merge(left, right, merged):
-    lc, rc = 0, 0
-    while lc < len(left) and rc < len(right):
+def merge(left_list, right_list):
+    sorted_list = []
+    left_list_index = right_list_index = 0
 
-        if left[lc] <= right[rc]:
-            merged[lc + rc] = left[lc]
-            lc += 1
-        else:
-            merged[lc + rc] = right[rc]
-            rc += 1
+    # Длина списков часто используется, поэтому создадим переменные для удобства
+    left_list_length, right_list_length = len(left_list), len(right_list)
 
-    for lc in range(lc, len(left)):
-        merged[lc + rc] = left[lc]
+    for _ in range(left_list_length + right_list_length):
+        if left_list_index < left_list_length and right_list_index < right_list_length:
+            # Сравниваем первые элементы в начале каждого списка
+            # Если первый элемент левого подсписка меньше, добавляем его
+            # в отсортированный массив
+            if left_list[left_list_index] <= right_list[right_list_index]:
+                sorted_list.append(left_list[left_list_index])
+                left_list_index += 1
+            # Если первый элемент правого подсписка меньше, добавляем его
+            # в отсортированный массив
+            else:
+                sorted_list.append(right_list[right_list_index])
+                right_list_index += 1
 
-    for rc in range(rc, len(right)):
-        merged[lc + rc] = right[rc]
+        # Если достигнут конец левого списка, элементы правого списка
+        # добавляем в конец результирующего списка
+        elif left_list_index == left_list_length:
+            sorted_list.append(right_list[right_list_index])
+            right_list_index += 1
+        # Если достигнут конец правого списка, элементы левого списка
+        # добавляем в отсортированный массив
+        elif right_list_index == right_list_length:
+            sorted_list.append(left_list[left_list_index])
+            left_list_index += 1
 
-    return merged
+    return sorted_list
 
+def merge_sort(nums):
+    # Возвращаем список, если он состоит из одного элемента
+    if len(nums) <= 1:
+        return nums
 
-def smerge(m):
-    if len(m) <= 1:
-        return m
-    mid = len(m) // 2
-    left, right = smerge(m[:mid]), smerge(m[mid:])
+    # Для того чтобы найти середину списка, используем деление без остатка
+    # Индексы должны быть integer
+    mid = len(nums) // 2
 
-    return smerge(left, right, m.copy())
+    # Сортируем и объединяем подсписки
+    left_list = merge_sort(nums[:mid])
+    right_list = merge_sort(nums[mid:])
+
+    # Объединяем отсортированные списки в результирующий
+    return merge(left_list, right_list)
+
 
 
 def selection_sort(m):
@@ -106,15 +99,29 @@ def selection_sort(m):
             if m[j] < m[smallest]:
                 smallest = j
         m[i], m[smallest] = m[smallest], m[i]
+    print(m)
 
 sel = int(input("Веедите вариант сортировки: 1 - bubble, 2 - quicksort, 3 - insert, 4 - merge, 5 - selection:\n"))
 
 #def switch_func(sel):
  #   switcher = {
-  #    2: qsort(m),
-    #    3: insert(m),
-     #   4: smerge(m),
-      #  5: selection_sort(m),
-    #}
-    #print(switcher.get(sel))
+  #      1: bubble(m)
+    #    2: qsort(m),
+   #     3: insert(m),
+   #     4: smerge(m),
+   #     5: selection_sort(m),
+  #  }
+  #  print(switcher.get(sel))
 
+if sel == 1:
+    print(bubble(m))
+elif sel == 2:
+    print(qsort(m))
+elif sel == 3:
+    print(insert(m))
+elif sel == 4:
+    print(merge_sort(m))
+elif sel == 5:
+    print(selection_sort(m))
+else:
+    print("Ошибка ввода")

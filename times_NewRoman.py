@@ -1,9 +1,45 @@
+import time
 import random
-n = int(input())
+n = int(input("Введите сложность массива  "))
 m = []
 for r in range(n):
-    m.append(random.randint(1, 20))
+    m.append(random.randint(1, n))
 
+def qsort(m):
+    l, e, g = [], [], []
+    if len(m) > 1:
+        op = m[0]
+        for i in m:
+            if i < op:
+                l.append(i)
+            elif i == op:
+                e.append(i)
+            else:
+                g.append(i)
+        return qsort(l)+e+qsort(g)
+    else:
+        return m
+    print(m)
+
+def bubble(m):
+    for k in m:
+        for i in range(n-1):
+            if m[i] > m[i+1]:
+                m[i], m[i+1] = m[i+1], m[i]
+    print(m)
+
+def insert(m):
+
+    for i in range(n):
+        cursor = m[i]
+        pos = i
+        while pos > 0 and m[pos - 1] > cursor:
+            m[pos] = m[pos - 1]
+            pos = pos - 1
+        m[pos] = cursor
+
+    return m
+    print(m)
 
 def merge(left_list, right_list):
     sorted_list = []
@@ -56,4 +92,52 @@ def merge_sort(nums):
     return merge(left_list, right_list)
 
 
-print(merge_sort(m))
+
+def selection_sort(m):
+    for i in range(0, len(m) - 1):
+        smallest = i
+        for j in range(i + 1, len(m)):
+            if m[j] < m[smallest]:
+                smallest = j
+        m[i], m[smallest] = m[smallest], m[i]
+    print(m)
+
+sel = int(input("Веедите вариант сортировки: 1 - bubble, 2 - quicksort, 3 - insert, 4 - merge, 5 - selection:\n"))
+
+#def switch_func(sel):
+ #   switcher = {
+  #      1: bubble(m)
+    #    2: qsort(m),
+   #     3: insert(m),
+   #     4: smerge(m),
+   #     5: selection_sort(m),
+  #  }
+  #  print(switcher.get(sel))
+
+def toFixed(numObj, digits=10):
+    return f"{numObj:.{digits}f}"
+
+if sel == 1:
+    starttime = time.time()
+    print(bubble(m))
+    print(toFixed((time.time() - starttime)), "seconds")
+elif sel == 2:
+    starttime = time.time()
+    print(qsort(m))
+    print(toFixed((time.time() - starttime)), "seconds")
+elif sel == 3:
+    starttime = time.time()
+    print(insert(m))
+    print(toFixed((time.time() - starttime)), "seconds")
+elif sel == 4:
+    starttime = time.time()
+    print(merge_sort(m))
+    print(toFixed((time.time() - starttime)), "seconds")
+elif sel == 5:
+    starttime = time.time()
+    print(selection_sort(m))
+    print(toFixed((time.time() - starttime)), "seconds")
+else:
+    print("Ошибка ввода")
+
+
