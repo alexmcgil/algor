@@ -4,7 +4,6 @@ m = []
 for r in range(n):
     m.append(random.randint(1, 20))
 def qsort(m):
-
     l, e, g = [], [], []
     if len(m) > 1:
         op = m[0]
