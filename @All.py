@@ -1,38 +1,45 @@
 import random
+
+# Объявляем массив и заполняем его рандомными числами до n, количеством n
 n = int(input("Введите сложность массива  "))
 m = []
 for r in range(n):
     m.append(random.randint(1, n))
+# Выводим изначальный массив, дабы сравнить
+print(m)
+
 
 def qsort(m):
-    l, e, g = [], [], []
+    l, e, g = [], [], []  # Создаём три пустых массива
     if len(m) > 1:
-        op = m[0]
+        op = m[0]  # Определяем курсор на первом элементе массива
         for i in m:
-            if i < op:
+            if i < op:  # Сортируем элементы меньшие чем курсор
                 l.append(i)
-            elif i == op:
+            elif i == op:  # Сортируем элементы равные курсору
                 e.append(i)
-            else:
+            else:  # Сортируем элементы большие чем курсор
                 g.append(i)
-        return qsort(l)+e+qsort(g)
+        return qsort(l) + e + qsort(g)  # Возвращаем массивы отсортировываться до конца через рекурсию
     else:
-        return m
+        return m  # Если массивы отсортированы, заканчиваем
     print(m)
+
 
 def bubble(m):
     for k in m:
-        for i in range(n-1):
-            if m[i] > m[i+1]:
-                m[i], m[i+1] = m[i+1], m[i]
+        for i in range(n - 1):
+            if m[i] > m[i + 1]:  # Если нашёлся меньший элемент, вставляем его в начало
+                m[i], m[i + 1] = m[i + 1], m[i]
+    return m
     print(m)
 
-def insert(m):
 
+def insert(m):
     for i in range(n):
-        cursor = m[i]
-        pos = i
-        while pos > 0 and m[pos - 1] > cursor:
+        cursor = m[i]  # Определяем курсор
+        pos = i  # Устанавливаем позицию курсору
+        while pos > 0 and m[pos - 1] > cursor:  # Ищем неотсортированные элементы
             m[pos] = m[pos - 1]
             pos = pos - 1
         m[pos] = cursor
@@ -40,11 +47,12 @@ def insert(m):
     return m
     print(m)
 
+
 def merge(left_list, right_list):
     sorted_list = []
     left_list_index = right_list_index = 0
 
-    # Длина списков часто используется, поэтому создадим переменные для удобства
+    # Создадим переменные 
     left_list_length, right_list_length = len(left_list), len(right_list)
 
     for _ in range(left_list_length + right_list_length):
@@ -74,6 +82,7 @@ def merge(left_list, right_list):
 
     return sorted_list
 
+
 def merge_sort(nums):
     # Возвращаем список, если он состоит из одного элемента
     if len(nums) <= 1:
@@ -91,7 +100,6 @@ def merge_sort(nums):
     return merge(left_list, right_list)
 
 
-
 def selection_sort(m):
     for i in range(0, len(m) - 1):
         smallest = i
@@ -101,17 +109,8 @@ def selection_sort(m):
         m[i], m[smallest] = m[smallest], m[i]
     print(m)
 
-sel = int(input("Веедите вариант сортировки: 1 - bubble, 2 - quicksort, 3 - insert, 4 - merge, 5 - selection:\n"))
 
-#def switch_func(sel):
- #   switcher = {
-  #      1: bubble(m)
-    #    2: qsort(m),
-   #     3: insert(m),
-   #     4: smerge(m),
-   #     5: selection_sort(m),
-  #  }
-  #  print(switcher.get(sel))
+sel = int(input("Веедите вариант сортировки: 1 - bubble, 2 - quicksort, 3 - insert, 4 - merge, 5 - selection:\n"))
 
 if sel == 1:
     print(bubble(m))
