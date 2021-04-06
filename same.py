@@ -1,44 +1,46 @@
 import random
-n = int(input("Введите сложность массива  "))
-m = []
-for r in range(n):
-    m.append(1)
 
-def qsort(m):
+n = int(input("Введите сложность массива: "))
+items = [1 for i in range(n)]
+
+print(items)
+
+
+def qsort(items):
     l, e, g = [], [], []
-    if len(m) > 1:
-        op = m[0]
-        for i in m:
+    if len(items) > 1:
+        op = items[0]
+        for i in items:
             if i < op:
                 l.append(i)
             elif i == op:
                 e.append(i)
             else:
                 g.append(i)
-        return qsort(l)+e+qsort(g)
+        return qsort(l) + e + qsort(g)
     else:
-        return m
-    print(m)
+        return items
 
-def bubble(m):
-    for k in m:
-        for i in range(n-1):
-            if m[i] > m[i+1]:
-                m[i], m[i+1] = m[i+1], m[i]
-    print(m)
 
-def insert(m):
+def bubble(items):
+    for k in items:
+        for i in range(n - 1):
+            if items[i] > items[i + 1]:
+                items[i], items[i + 1] = items[i + 1], items[i]
+    print(items)
 
+
+def insert(items):
     for i in range(n):
-        cursor = m[i]
+        cursor = items[i]
         pos = i
-        while pos > 0 and m[pos - 1] > cursor:
-            m[pos] = m[pos - 1]
+        while pos > 0 and items[pos - 1] > cursor:
+            items[pos] = items[pos - 1]
             pos = pos - 1
-        m[pos] = cursor
+        items[pos] = cursor
 
-    return m
-    print(m)
+    return items
+
 
 def merge(left_list, right_list):
     sorted_list = []
@@ -71,8 +73,8 @@ def merge(left_list, right_list):
         elif right_list_index == right_list_length:
             sorted_list.append(left_list[left_list_index])
             left_list_index += 1
-
     return sorted_list
+
 
 def merge_sort(nums):
     # Возвращаем список, если он состоит из одного элемента
@@ -91,37 +93,27 @@ def merge_sort(nums):
     return merge(left_list, right_list)
 
 
-
-def selection_sort(m):
-    for i in range(0, len(m) - 1):
+def selection_sort(items):
+    for i in range(0, len(items) - 1):
         smallest = i
-        for j in range(i + 1, len(m)):
-            if m[j] < m[smallest]:
+        for j in range(i + 1, len(items)):
+            if items[j] < items[smallest]:
                 smallest = j
-        m[i], m[smallest] = m[smallest], m[i]
-    print(m)
+        items[i], items[smallest] = items[smallest], items[i]
+    print(items)
 
-sel = int(input("Веедите вариант сортировки: 1 - bubble, 2 - quicksort, 3 - insert, 4 - merge, 5 - selection:\n"))
 
-#def switch_func(sel):
- #   switcher = {
-  #      1: bubble(m)
-    #    2: qsort(m),
-   #     3: insert(m),
-   #     4: smerge(m),
-   #     5: selection_sort(m),
-  #  }
-  #  print(switcher.get(sel))
+sel = int(input("Веедите вариант сортировки: 1 - bubble, 2 - quicksort, 3 - insert, 4 - merge, 5 - selection: "))
 
 if sel == 1:
-    print(bubble(m))
+    print(bubble(items))
 elif sel == 2:
-    print(qsort(m))
+    print(qsort(items))
 elif sel == 3:
-    print(insert(m))
+    print(insert(items))
 elif sel == 4:
-    print(merge_sort(m))
+    print(merge_sort(items))
 elif sel == 5:
-    print(selection_sort(m))
+    print(selection_sort(items))
 else:
     print("Ошибка ввода")
