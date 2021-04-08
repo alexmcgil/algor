@@ -1,9 +1,5 @@
-'''import numpy as np
-
-# Объявляем массив и заполняем его рандомными числами до n, количеством n
-n = int(input("Введите сложность массива: "))
-items = np.random.randint(0, n, n)
-print(items)'''
+def printhash():
+    print("############################")
 
 
 def qsort(items):
@@ -106,18 +102,3 @@ def selection_sort(items):
                 smallest = j
         items[i], items[smallest] = items[smallest], items[i]
     print(items)
-'''
-sel = int(input('Веедите вариант сортировки: 1 - bubble, 2 - quicksort, 3 - insert, 4 - merge, 5 - selection: '))
-
-if sel == 1:
-    print(bubble(items))
-elif sel == 2:
-    print(qsort(items))
-elif sel == 3:
-    print(insert(items))
-elif sel == 4:
-    print(merge_sort(items))
-elif sel == 5:
-    print(selection_sort(items))
-else:
-    print("Ошибка ввода")'''
