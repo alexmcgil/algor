@@ -1,9 +1,9 @@
-import numpy as np
+'''import numpy as np
 
 # Объявляем массив и заполняем его рандомными числами до n, количеством n
 n = int(input("Введите сложность массива: "))
 items = np.random.randint(0, n, n)
-print(items)
+print(items)'''
 
 
 def qsort(items):
@@ -106,8 +106,7 @@ def selection_sort(items):
                 smallest = j
         items[i], items[smallest] = items[smallest], items[i]
     print(items)
-
-
+'''
 sel = int(input('Веедите вариант сортировки: 1 - bubble, 2 - quicksort, 3 - insert, 4 - merge, 5 - selection: '))
 
 if sel == 1:
@@ -121,4 +120,4 @@ elif sel == 4:
 elif sel == 5:
     print(selection_sort(items))
 else:
-    print("Ошибка ввода")
+    print("Ошибка ввода")'''
