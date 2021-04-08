@@ -9,13 +9,17 @@ print(items)
 def qsort(items):
     lower, equal, greater = [], [], []
     if len(items) > 1:
-        cursor = items[0]  # Определяем курсор на первом элементе массива
+        # Определяем курсор на первом элементе массива
+        cursor = items[0]
         for i in items:
-            if i < cursor:  # Сортируем элементы меньшие чем курсор
+            # Помещаем в массив lower элементы меньшие чем курсор
+            if i < cursor:
                 lower.append(i)
-            elif i == cursor:  # Сортируем элементы равные курсору
+                # Помещаем в массив equal элементы равные курсору
+            elif i == cursor:
                 equal.append(i)
-            else:  # Сортируем элементы большие чем курсор
+            else:
+                # Помещаем в массив greater элементы большие чем курсор
                 greater.append(i)
         return qsort(lower) + equal + qsort(greater)  # Возвращаем массивы отсортировываться до конца через рекурсию
     else:
@@ -25,16 +29,17 @@ def qsort(items):
 def bubble(items):
     for k in items:
         for i in range(n - 1):
-            if items[i] > items[i + 1]:  # Если нашёлся меньший элемент, вставляем его в начало
+            # Если нашёлся меньший элемент, меняем их местами
+            if items[i] > items[i + 1]:
                 items[i], items[i + 1] = items[i + 1], items[i]
     return items
 
 
 def insert(items):
     for i in range(n):
-        cursor = items[i]  # Определяем курсор
-        pos = i  # Устанавливаем позицию курсору
-        while pos > 0 and items[pos - 1] > cursor:  # Ищем неотсортированные элементы
+        cursor = items[i]
+        pos = i
+        while pos > 0 and items[pos - 1] > cursor:
             items[pos] = items[pos - 1]
             pos = pos - 1
         items[pos] = cursor
