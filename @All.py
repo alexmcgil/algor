@@ -1,10 +1,8 @@
-import random
+import numpy as np
 
 # Объявляем массив и заполняем его рандомными числами до n, количеством n
 n = int(input("Введите сложность массива: "))
-items = [random.randint(0, n) for i in range(n)]
-
-# Выводим изначальный массив, дабы сравнить
+items = np.random.randint(0, n, n)
 print(items)
 
 
