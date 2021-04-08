@@ -7,17 +7,17 @@ print(items)
 
 
 def qsort(items):
-    l, e, g = [], [], []  # Создаём три пустых массива
+    lower, equal, greater = [], [], []
     if len(items) > 1:
-        op = items[0]  # Определяем курсор на первом элементе массива
+        cursor = items[0]  # Определяем курсор на первом элементе массива
         for i in items:
-            if i < op:  # Сортируем элементы меньшие чем курсор
-                l.append(i)
-            elif i == op:  # Сортируем элементы равные курсору
-                e.append(i)
+            if i < cursor:  # Сортируем элементы меньшие чем курсор
+                lower.append(i)
+            elif i == cursor:  # Сортируем элементы равные курсору
+                equal.append(i)
             else:  # Сортируем элементы большие чем курсор
-                g.append(i)
-        return qsort(l) + e + qsort(g)  # Возвращаем массивы отсортировываться до конца через рекурсию
+                greater.append(i)
+        return qsort(lower) + equal + qsort(greater)  # Возвращаем массивы отсортировываться до конца через рекурсию
     else:
         return items  # Если массивы отсортированы, заканчиваем
 
