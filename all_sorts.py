@@ -1,5 +1,9 @@
-def printhash():
+def printHash():
     print("############################")
+
+
+def printTild():
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
 
 def qsort(items):
@@ -22,16 +26,16 @@ def qsort(items):
         return items  # Если массивы отсортированы, заканчиваем
 
 
-def bubble(items):
+def bubble(items, n):
     for k in items:
-        for i in range(n - 1):
+        for i in range(n-1):
             # Если нашёлся меньший элемент, меняем их местами
             if items[i] > items[i + 1]:
                 items[i], items[i + 1] = items[i + 1], items[i]
     return items
 
 
-def insert(items):
+def insert(items, n):
     for i in range(n):
         cursor = items[i]
         pos = i
@@ -101,4 +105,4 @@ def selection_sort(items):
             if items[j] < items[smallest]:
                 smallest = j
         items[i], items[smallest] = items[smallest], items[i]
-    print(items)
+    return items
