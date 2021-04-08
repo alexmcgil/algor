@@ -7,7 +7,7 @@ Bubble: 44.48 seconds
 
 Quicksort: 0.09 seconds
 
-Inset: 12.78 seconds
+Insert: 12.78 seconds
 
 Merge: 0.15 seconds
 
