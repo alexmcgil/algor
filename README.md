@@ -3,12 +3,12 @@
 
 Сравнение времени исполнения на 10000 элементах
 
-Bubble: 44.4845275879 seconds
+Bubble: 44.48 seconds
 
-Quicksort: 0.0944855213 seconds
+Quicksort: 0.09 seconds
 
-Inset: 12.7831656933 seconds
+Inset: 12.78 seconds
 
-Merge: 0.1580519676 seconds
+Merge: 0.15 seconds
 
-Selection: 16.3769519329 seconds
+Selection: 16.37 seconds
